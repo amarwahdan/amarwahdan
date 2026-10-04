@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="584" viewBox="0 0 1100 584">
+  <defs>
+    <linearGradient id="qbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0D1117"/><stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="qglow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <style>
+    .t1{animation:t1 18s infinite} .t2{animation:t2 18s infinite}
+    .m1{animation:m1 18s infinite} .m2{animation:m2 18s infinite}
+    .t1-d1,.t2-d1{animation:db 1.2s 0s infinite} .t1-d2,.t2-d2{animation:db 1.2s .15s infinite} .t1-d3,.t2-d3{animation:db 1.2s .3s infinite}
+    @keyframes db{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+    @keyframes t1{0%,3%{opacity:0}5%,12%{opacity:1}14%,100%{opacity:0}}
+    @keyframes m1{0%,13%{opacity:0;transform:translateY(16px)}17%,96%{opacity:1;transform:translateY(0)}99%,100%{opacity:0;transform:translateY(0)}}
+    @keyframes t2{0%,44%{opacity:0}46%,53%{opacity:1}55%,100%{opacity:0}}
+    @keyframes m2{0%,54%{opacity:0;transform:translateY(16px)}58%,96%{opacity:1;transform:translateY(0)}99%,100%{opacity:0;transform:translateY(0)}}
+    .online{animation:on 2s infinite}
+    @keyframes on{0%,100%{opacity:1}50%{opacity:.35}}
+  </style>
+
+  <rect x="8" y="8" width="1084" height="568" rx="20" fill="url(#qbg)" stroke="#21262D" stroke-width="1.5"/>
+
+  <!-- chat header bar -->
+  <circle cx="42" cy="35" r="7" fill="#FF5F57"/><circle cx="66" cy="35" r="7" fill="#FEBC2E"/><circle cx="90" cy="35" r="7" fill="#28C840"/>
+  <text x="550.0" y="41" text-anchor="middle" font-size="17" font-weight="700" fill="#C9D1D9" font-family="'Segoe UI', Arial, sans-serif" letter-spacing="2">💬 DEV QUOTES · recommendations.chat</text>
+  <circle class="online" cx="1004" cy="35" r="5.5" fill="#28C840" filter="url(#qglow)"/>
+  <text x="1014" y="40" font-size="13" fill="#28C840" font-family="'Segoe UI', Arial, sans-serif">online</text>
+  <line x1="24" y1="54" x2="1076" y2="54" stroke="#21262D"/>
+
+  <g class="t1">
+      <rect x="96" y="80" width="92" height="46" rx="20" fill="#161B22" stroke="#21262D"/><circle cx="124" cy="103.0" r="4.5" fill="#8B949E" class="t1-d1"/><circle cx="140" cy="103.0" r="4.5" fill="#8B949E" class="t1-d2"/><circle cx="156" cy="103.0" r="4.5" fill="#8B949E" class="t1-d3"/>
+    </g>
+  <g class="m1">
+      <circle cx="58" cy="174" r="24" fill="#8B5CF6"/>
+      <text x="58" y="181" text-anchor="middle" font-size="20" font-weight="700" fill="#0D1117" font-family="'Segoe UI', Arial, sans-serif">M</text>
+      <rect x="96" y="144" width="640" height="177" rx="18" fill="#161B22" stroke="#8B5CF6" stroke-opacity="0.55" stroke-width="1.5"/>
+      <rect x="96" y="144" width="4" height="177" rx="2" fill="#8B5CF6"/>
+      <text x="114" y="178" font-size="15.5" fill="#E6EDF3" font-family="'Segoe UI', Arial, sans-serif">I had the pleasure of working with Amar on an AI project, and I was</text><text x="114" y="201" font-size="15.5" fill="#E6EDF3" font-family="'Segoe UI', Arial, sans-serif">truly impressed by his expertise. He built a highly effective AI</text><text x="114" y="224" font-size="15.5" fill="#E6EDF3" font-family="'Segoe UI', Arial, sans-serif">model that delivered real results. Amar is professional, skilled,</text><text x="114" y="247" font-size="15.5" fill="#E6EDF3" font-family="'Segoe UI', Arial, sans-serif">and deeply knowledgeable in AI and data science. I'd highly</text><text x="114" y="270" font-size="15.5" fill="#E6EDF3" font-family="'Segoe UI', Arial, sans-serif">recommend him to anyone looking for a top-tier AI engineer.</text>
+      <text x="718" y="293" text-anchor="end" font-size="14" font-weight="700" fill="#8B5CF6" font-family="'Segoe UI', Arial, sans-serif">— Mohamed · AI Project Collaborator</text>
+    </g>
+
+  <g class="t2">
+      <rect x="912" y="349.8" width="92" height="46" rx="20" fill="#161B22" stroke="#21262D"/><circle cx="940" cy="372.8" r="4.5" fill="#8B949E" class="t2-d1"/><circle cx="956" cy="372.8" r="4.5" fill="#8B949E" class="t2-d2"/><circle cx="972" cy="372.8" r="4.5" fill="#8B949E" class="t2-d3"/>
+    </g>
+  <g class="m2">
+      <circle cx="1042" cy="443.8" r="24" fill="#00E5FF"/>
+      <text x="1042" y="450.8" text-anchor="middle" font-size="20" font-weight="700" fill="#0D1117" font-family="'Segoe UI', Arial, sans-serif">A</text>
+      <rect x="444" y="413.8" width="560" height="131" rx="18" fill="#161B22" stroke="#00E5FF" stroke-opacity="0.55" stroke-width="1.5"/>
+      <rect x="444" y="413.8" width="4" height="131" rx="2" fill="#00E5FF"/>
+      <text x="986" y="447.8" text-anchor="end" font-size="15.5" fill="#E6EDF3" font-family="'Segoe UI', Tahoma, Arial, sans-serif">ما شاء الله، لو الأمر كما شرحته فأعتقد ده بحث جدير</text><text x="986" y="470.8" text-anchor="end" font-size="15.5" fill="#E6EDF3" font-family="'Segoe UI', Tahoma, Arial, sans-serif">يكون في مكان مميز قريباً بإذن الله. توكل على الله،</text><text x="986" y="493.8" text-anchor="end" font-size="15.5" fill="#E6EDF3" font-family="'Segoe UI', Tahoma, Arial, sans-serif">ويا رب يشوف النور قريب 🤲</text>
+      <text x="462" y="516.8" text-anchor="start" font-size="14" font-weight="700" fill="#00E5FF" font-family="'Segoe UI', Arial, sans-serif">— Abu Bakr Soliman · MSc</text>
+    </g>
+</svg>
