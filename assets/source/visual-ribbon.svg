@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="170" viewBox="0 0 1200 170" role="img" aria-labelledby="title desc">
+  <title id="title">Amar Ahmed Hamed — research and recognition ribbon</title>
+  <desc id="desc">Dark graphite AI engineering visual with cyan, mint, violet, and hot-pink system accents.</desc>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .mono { font-family: "Courier New", monospace; letter-spacing: 1.5px; }
+    .pulse { animation: pulse 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .drift { animation: drift 7s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .dash { animation: dash 8s linear infinite; }
+    .blink { animation: blink 2.7s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity:.38; transform:scale(.94); } 50% { opacity:1; transform:scale(1.06); } }
+    @keyframes drift { 0%,100% { transform:translate(0,0); } 50% { transform:translate(0,-5px); } }
+    @keyframes dash { to { stroke-dashoffset:-180; } }
+    @keyframes blink { 0%,100% { opacity:.32; } 50% { opacity:1; } }
+  </style>
+  <defs><linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#77ffe0"/><stop offset=".48" stop-color="#a78bfa"/><stop offset="1" stop-color="#f29dd7"/></linearGradient></defs>
+<rect width="1200" height="170" rx="24" fill="#07090c"/><rect x="26" y="26" width="1148" height="118" rx="18" fill="#0e141b" stroke="url(#ribbon)" stroke-width="1.5"/><text x="60" y="67" fill="#91aaa8" font-size="12" class="mono">RESEARCH / RECOGNITION</text><text x="60" y="111" fill="#e8f6f2" font-size="37" font-weight="700">#34</text><text x="173" y="108" fill="#77ffe0" font-size="22" font-weight="700" class="mono">PUBLIC LEADERBOARD</text><path d="M615 51 V119" stroke="#26343b"/><text x="670" y="80" fill="#e8f6f2" font-size="15" font-weight="700">Kaggle Expert</text><text x="670" y="108" fill="#91aaa8" font-size="14">Best Trainee at PathLine · authored research</text><circle cx="1115" cy="84" r="20" fill="none" stroke="#f29dd7" stroke-width="2" class="pulse"/><circle cx="1115" cy="84" r="5" fill="#f29dd7" class="blink"/></svg>
