@@ -1,0 +1,330 @@
+[
+  {
+    "id": "mooox",
+    "index": "01",
+    "name": "Mooox-Agent",
+    "category": "AGENTIC SECURITY / PRIVATE PROJECT",
+    "accent": "#43E8E1",
+    "soft": "#173d493b",
+    "subtitle": "Autonomous multi-agent security assessment with recursive investigation, sandboxed tooling, and evidence-backed findings.",
+    "metric": "4 ROUNDS",
+    "metric_label": "Recursive deepening engine",
+    "metric_note": "Architecture scope / not a performance benchmark",
+    "flow": [
+      "Scoped target",
+      "Agent graph",
+      "Docker tools",
+      "PoC validation",
+      "Report + checkpoint"
+    ],
+    "tech": [
+      "Python",
+      "LiteLLM / Ollama",
+      "Docker",
+      "Playwright",
+      "Textual / Rich"
+    ],
+    "repo": "",
+    "demo": "",
+    "writeup": "",
+    "video": "",
+    "idea": "I built a multi-agent framework for authorized web security assessments: agents investigate application behavior, share discoveries, and validate suspected vulnerabilities before reporting them.",
+    "challenge": "Coordinate recursive investigations and heterogeneous tools without losing execution state, confusing unverified findings with evidence, or allowing tooling to escape its intended execution boundary.",
+    "result": "A **4-round recursive deepening engine**, with documented checkpoint/resume behavior and a headless CI/CD path. These describe system scope; no public false-positive-rate, precision/recall, latency, or throughput benchmark is claimed.",
+    "technologies": "Python · Poetry · LiteLLM · Ollama · Docker / OCI / GHCR · Playwright · Textual / Rich · Pytest · OpenTelemetry · PostHog · Jinja2",
+    "status": "Implementation private. This public architecture summary is based on my project documentation; source code and hosted demo are not publicly available.",
+    "diagram": "flowchart LR\n    T[Authorized target and scope] --> G[Coordinating agent graph]\n    G --> D[Docker sandbox and security tools]\n    D --> E[Validation and evidence]\n    E --> R[Actionable findings and reports]\n    E -. discoveries .-> G\n    G -. save state .-> C[Checkpoint]\n    C -. resume .-> G",
+    "deep": "### Orchestration and execution\n\nThe documented workflow supports local codebases, web applications, and repository-based assessments, with instructions defining scope and exclusions. Specialized agents share discoveries and investigate attack surfaces recursively. Tooling is isolated in a Docker sandbox; the CV documents nuclei, sqlmap, ffuf, and jwt_tool alongside browser automation.\n\n### Continuity and integration\n\nProject documentation describes checkpointing after each agent iteration. Resume restores conversation history, findings, and iteration state, while creating a fresh sandbox. A non-interactive mode is documented for CI/CD integration, including a non-zero exit when vulnerabilities are found. These are documented capabilities, not a public end-to-end reproduction.\n\n### Evidence and boundaries\n\nFinding validation uses proof-of-concept evidence and multi-signal confirmation. There is no published evaluation corpus, named baseline, measured false-positive reduction, or latency/throughput result. Enterprise controls and vendor model recommendations in the private README are not presented here as independently verified features. Security testing must remain limited to systems owned by the operator or explicitly authorized for testing.",
+    "sources": [
+      {
+        "label": "Public contact for project discussion",
+        "url": "https://www.linkedin.com/in/amar-ahmed-hamed-25b676302"
+      }
+    ]
+  },
+  {
+    "id": "health-guardian",
+    "index": "02",
+    "name": "Health Guardian",
+    "category": "MULTIMODAL AI / MEDICAL SAFETY",
+    "accent": "#59E3B4",
+    "soft": "#1449363b",
+    "subtitle": "See → Reason → Verify → Act. Gemma 4 proposes; a deterministic safety gate retains the final say on urgency.",
+    "metric": "15 CHECKS",
+    "metric_label": "Regression checks + 4 verification tools",
+    "metric_note": "Logic coverage / not clinical validation",
+    "flow": [
+      "Text + photo",
+      "Gemma perception",
+      "Tool verification",
+      "Safety gate",
+      "Auditable triage"
+    ],
+    "tech": [
+      "Gemma 4",
+      "PyTorch",
+      "Transformers",
+      "Pydantic",
+      "Gradio"
+    ],
+    "repo": "Health-Guardian-AI-safety-agent",
+    "demo": "https://www.kaggle.com/code/amarahmedhamed/health-guardian-ai-safety-agent?scriptVersionId=341035439",
+    "writeup": "https://www.kaggle.com/competitions/build-with-gemma-tfug-prayagraj-ai-prayagraj/writeups/health-guardian",
+    "video": "",
+    "idea": "A tool-using medical-safety prototype that separates visible medication-label evidence from reasoning, verifies relevant claims, and returns structured triage with an audit trail.",
+    "challenge": "Harden stochastic tool calls against multiple wire formats, schema drift, unverified facility names, and under-triage. The deterministic gate may escalate urgency, never downgrade it.",
+    "result": "**15 automated mocked regression/sanity checks**, **4 verification tools**, and **5 documented end-to-end examples** in the writeup. These support orchestration behavior—not clinical accuracy or comprehensive medical safety.",
+    "technologies": "Python · Gemma 4 · PyTorch · Transformers · Pydantic · Gradio · Pillow",
+    "status": "Functional prototype with small illustrative reference datasets. Not a clinically validated medical device or a replacement for professional care. The demo link opens a public executable notebook, not an always-on endpoint.",
+    "diagram": "flowchart LR\n    I[Symptoms and optional photo] --> P[Visible evidence extraction]\n    P --> R[Gemma reasoning]\n    R --> T[Four verification tools]\n    T --> S[Structured output and audit trail]\n    S --> G[Deterministic Safety Gate]\n    G --> O[Final triage and limitations]",
+    "deep": "### Verification contracts\n\nThe four tools check drug interactions, red-flag symptoms, medication information, and demo facilities. `TriageOutput` preserves urgency, evidence, recommended actions, limitations, and tool-call history. `apply_safety_gate` uses verified high-severity evidence to escalate the model's proposal. Urgent/emergency cases with a location are routed through facility lookup rather than relying on a generated facility name.\n\n### Failure-driven hardening\n\nThe writeup documents three observed tool-call formats, variable argument keys, an invented facility name, and explicit-null normalization failures. The notebook's mocked regression suite covers parsing, fallback behavior, schema normalization, and escalation. Five illustrated end-to-end questions complement the logic checks; they are demonstrations rather than a held-out clinical test set.\n\n### Data and evaluation boundary\n\nThe notebook includes 15 drug-interaction pairs, 8 red-flag patterns, 13 medication records, and 4 demo facilities. These are illustrative references, not exhaustive clinical sources. No sensitivity, specificity, calibration, or per-inference latency benchmark is published. The public Kaggle notebook has a saved successful run; its total notebook runtime must not be interpreted as inference latency.",
+    "sources": [
+      {
+        "label": "Implementation notebook",
+        "url": "https://github.com/amarwahdan/Health-Guardian-AI-safety-agent/blob/main/src/health-guardian-ai-safety-agent.ipynb"
+      },
+      {
+        "label": "Original architecture image",
+        "url": "https://github.com/amarwahdan/Health-Guardian-AI-safety-agent/blob/main/src/Write-up_Img/Health-Guargian_Arch.png"
+      },
+      {
+        "label": "Published Kaggle writeup / DOI",
+        "url": "https://doi.org/10.34740/kaggle/w/109052"
+      }
+    ]
+  },
+  {
+    "id": "amarzero",
+    "index": "03",
+    "name": "AmarZero",
+    "category": "VISION + MODEL-BASED RL / RESEARCH",
+    "accent": "#A78BFA",
+    "soft": "#42315e48",
+    "subtitle": "A proposed hybrid tracking architecture connecting visual encoding, state estimation, learned dynamics, and search-based planning.",
+    "metric": "1.35 px",
+    "metric_label": "Paper-reported single-object mean error",
+    "metric_note": "Limited experiment / not a full MOT17 benchmark",
+    "flow": [
+      "Vision encoder",
+      "Kalman estimate",
+      "World model",
+      "MCTS",
+      "Tracking action"
+    ],
+    "tech": [
+      "ViT-B/16",
+      "PyTorch",
+      "Kalman Filter",
+      "MCTS",
+      "OpenCV"
+    ],
+    "repo": "AmarZero",
+    "demo": "",
+    "writeup": "https://github.com/amarwahdan/AmarZero/blob/main/AmarZero%20paper%20v10.pdf",
+    "video": "",
+    "idea": "My research prototype explores predictive object tracking and planning through a proposed combination of transformer-based vision, Kalman state estimation, a learned world model, and Monte Carlo Tree Search.",
+    "challenge": "Connect perception, uncertainty-aware state estimation, transition prediction, and action search in a tracking loop—rather than treating localization as an isolated prediction.",
+    "result": "The paper reports **1.35 px single-object** and **2.08 px multi-object** mean error. Checked-in CSVs correspond to limited experiments; see the scope and comparison notes in the architecture brief.",
+    "technologies": "Python · PyTorch / torchvision · ViT-B/16 · OpenCV · NumPy / pandas · Kalman filtering · Model-based RL · MCTS",
+    "status": "Research prototype and authored paper. The reported metrics do not establish full-dataset generalization, production real-time throughput, or superiority over every tracker.",
+    "diagram": "flowchart LR\n    F[Frames] --> V[ViT or CNN visual encoding]\n    V --> K[Kalman state estimation]\n    K --> W[Learned world model]\n    W --> M[MCTS action search]\n    M --> A[Tracking action]\n    A -. next step .-> F",
+    "deep": "### Research design versus implementation\n\nThe diagram summarizes the architecture proposed in the paper. The public scripts extract ViT features, but those extracted features are not passed into the Kalman/world-model decision path in the inspected implementation. The four-state estimate is `[x, y, vx, vy]`; the learned transition MLP is `6 → 128 → 64 → 4`. MCTS uses a discrete eight-action move set, with 50 simulations in single-object mode and 100 in multi-object mode.\n\n### What the published numbers mean\n\nThe single-object CSV contains 19 rows with mean Euclidean center error **1.3511303962 px**. The multi-object CSV contains 60 rows spanning 20 frames and three IDs, with mean **2.0857977985 px**. The paper prints 1.35 px and 2.08 px. These are existing reported artifacts, not a newly reproduced evaluation. The scripts cap processing at 20 frames; the multi-object path reads ground-truth centers directly, while the single-object script uses the image center as the observation.\n\n### Comparison discipline\n\nThe paper's comparison table lists multi-object errors of **2.08 px for AmarZero**, **35.6 px for Kalman**, and **1.2 px for DeepSORT**. Because lower error is better, that table does not support blanket superiority over DeepSORT. The conclusion's 40% occlusion-loss reduction lacks a published denominator and evaluation protocol, so it is not used as a profile headline metric. The paper identifies real-time edge deployment and improved initial localization as future work; no measured FPS or latency is asserted here.",
+    "sources": [
+      {
+        "label": "Authored paper",
+        "url": "https://github.com/amarwahdan/AmarZero/blob/main/AmarZero%20paper%20v10.pdf"
+      },
+      {
+        "label": "Single-object implementation",
+        "url": "https://github.com/amarwahdan/AmarZero/blob/main/single_task/amarzero_single.py"
+      },
+      {
+        "label": "Multi-object implementation",
+        "url": "https://github.com/amarwahdan/AmarZero/blob/main/multi_task/amarzero_multi.py"
+      },
+      {
+        "label": "Single-object evaluation CSV",
+        "url": "https://github.com/amarwahdan/AmarZero/blob/main/evaluation%20single.csv"
+      },
+      {
+        "label": "Multi-object evaluation CSV",
+        "url": "https://github.com/amarwahdan/AmarZero/blob/main/evaluation_multi%20%282%29.csv"
+      }
+    ]
+  },
+  {
+    "id": "tactical",
+    "index": "04",
+    "name": "Tactical Intelligence Framework",
+    "category": "SPORTS INTELLIGENCE / FEATURE ENGINEERING",
+    "accent": "#F5C76B",
+    "soft": "#4938193b",
+    "subtitle": "Decode how teams create outcomes: pressing organization, team-shape dynamics, and ordered tactical sequences.",
+    "metric": "49 / 9",
+    "metric_label": "Raw tactical features / analytical clusters",
+    "metric_note": "20 team-match rows / 10-match descriptive sample",
+    "flow": [
+      "SkillCorner data",
+      "Chain dedup",
+      "Shape dynamics",
+      "Sequence mining",
+      "Feature matrix"
+    ],
+    "tech": [
+      "Python",
+      "pandas / NumPy",
+      "SkillCorner",
+      "Matplotlib",
+      "Seaborn"
+    ],
+    "repo": "Tactical-Intelligence-Framework-Decoding-Team-Behavior-Through-Multi-Layer-Soccer",
+    "demo": "",
+    "writeup": "https://www.kaggle.com/competitions/soccer-feature-engineering-hackathon/writeups/new-writeup-1778167401935",
+    "video": "https://youtu.be/fUndffH3uX4",
+    "idea": "I engineered interpretable tactical signals that explain team behavior beyond goals and pass totals, combining event aggregation, phase-level shape changes, and ordered multi-event patterns.",
+    "challenge": "Integrate two heterogeneous data sources without double-counting pressing chains or attacking phases, normalize progression for opposite attacking directions, and detect regain-to-shot sequences in the correct temporal order.",
+    "result": "**49 features across 9 clusters**, producing a **20 × 49 feature matrix** from **10 matches**. The writeup reports **0 missing values**; winner/loser patterns are descriptive, not a held-out predictive benchmark.",
+    "technologies": "Python · Jupyter · pandas · NumPy · Matplotlib · Seaborn · SkillCorner dynamic_events / phases_of_play",
+    "status": "Feature-engineering research with a published writeup, notebook, CSV artifacts, and video walkthrough. The 10-match sample limits generalization claims.",
+    "diagram": "flowchart LR\n    E[Dynamic events] --> D[Deduplicate chains and phases]\n    P[Phases of play] --> S[Team-shape dynamics]\n    D --> O[Direction and frame ordering]\n    S --> O\n    O --> Q[Sequential pattern detection]\n    Q --> F[49-feature team-match matrix]",
+    "deep": "### Three analytical layers\n\nThe pipeline moves from event aggregation to phase-level shape dynamics and sequence detection. `dynamic_events.csv` and `phases_of_play.csv` are the two documented calculation inputs. Pressing chains are deduplicated by chain identity, progression is normalized by attacking direction, and sequencing uses `frame_start` because `time_start` is unpopulated. Raw outputs are counts, sums, distances, and durations rather than normalized performance scores.\n\n### Nine clusters\n\nPressing Architecture (7), Defensive Shape and Quality (9), Territorial Control (7), Ball Progression (6), Attacking Threat (5), Off-Ball Movement (4), Physical Dynamics (3), Game State and Defense (2), and Sequence Intelligence (6). The final cluster links ordered actions, including regain-ending pressing chains followed by a possession phase leading to a shot.\n\n### Outputs and interpretation\n\nThe generated CSV has 20 team-match rows for 10 matches and 49 feature columns, with match/team identifier columns in addition. The writeup reports 0 missing values. For example, winners/losers average 17.1/10.9 regain chains and 37.8/25.1 events leading to a shot. These are descriptive within-sample averages, not causal effects, classifier accuracy, or external validation. Pitch-size variation and small sample size are acknowledged in the writeup.",
+    "sources": [
+      {
+        "label": "Implementation notebook",
+        "url": "https://github.com/amarwahdan/Tactical-Intelligence-Framework-Decoding-Team-Behavior-Through-Multi-Layer-Soccer/blob/main/src/Tactical%20Intelligence%20Framework.ipynb"
+      },
+      {
+        "label": "Generated feature matrix",
+        "url": "https://github.com/amarwahdan/Tactical-Intelligence-Framework-Decoding-Team-Behavior-Through-Multi-Layer-Soccer/blob/main/src/Result/features.csv"
+      },
+      {
+        "label": "Published Kaggle writeup / DOI",
+        "url": "https://doi.org/10.34740/kaggle/w/81727"
+      }
+    ]
+  },
+  {
+    "id": "qorabot",
+    "index": "05",
+    "name": "QORAbot",
+    "category": "SCIENTIFIC RAG / SOURCE-AWARE QA",
+    "accent": "#6FB8FF",
+    "soft": "#19374f48",
+    "subtitle": "NASA and spaceflight question answering with dense retrieval, persisted vector artifacts, and source metadata.",
+    "metric": "377 ROWS",
+    "metric_label": "Cleaned question-answer corpus",
+    "metric_note": "Dataset scope / final retrieval setting k=2",
+    "flow": [
+      "Clean records",
+      "MPNet embeddings",
+      "FAISS retrieval",
+      "Zephyr 7B",
+      "Answer + sources"
+    ],
+    "tech": [
+      "LangChain",
+      "MPNet",
+      "FAISS",
+      "Zephyr 7B",
+      "Transformers"
+    ],
+    "repo": "-QORAbot-NASA-Research-Chat-System",
+    "demo": "",
+    "writeup": "",
+    "video": "",
+    "idea": "A notebook-based RAG system that retrieves NASA/spaceflight content and preserves source URLs alongside generated answers, rather than relying on model memory alone.",
+    "challenge": "Carry provenance through cleaning, embedding, retrieval, and generation, while constraining answers to retrieved context and handling insufficient evidence explicitly.",
+    "result": "A **377-row cleaned corpus**, persisted FAISS artifacts, and final **top-2 retrieval**. These are data/configuration measures; no held-out QA accuracy, faithfulness, or latency score is claimed.",
+    "technologies": "Python · pandas · LangChain · sentence-transformers/all-mpnet-base-v2 · FAISS · Hugging Face Transformers · Zephyr-7B-beta",
+    "status": "Public notebook prototype. Source metadata includes heterogeneous references, so the corpus is described as NASA-focused, not exclusively official NASA material.",
+    "diagram": "flowchart LR\n    D[Question-answer records and source URLs] --> C[Clean and chunk]\n    C --> E[Normalized MPNet embeddings]\n    E --> F[Persisted FAISS index]\n    Q[User question] --> F\n    F --> R[Top-2 context retrieval]\n    R --> Z[Zephyr generation]\n    Z --> A[Answer and retrieved source URLs]",
+    "deep": "### Retrieval and generation\n\nThe notebook retains category, question, answer, source, and text fields. A recursive splitter is configured with chunk size 800 and overlap 200. `all-mpnet-base-v2` produces normalized embeddings on CPU; FAISS stores the index. The final similarity retriever uses `k=2`. A Transformers pipeline with `HuggingFaceH4/zephyr-7b-beta` generates with a context-only prompt, `max_new_tokens=512`, temperature 0.3, and repetition penalty 1.1.\n\n### Provenance and persistence\n\nLangChain RetrievalQA returns source documents; the helper prints unique source URLs. `index.faiss` and `index.pkl` persist the vector artifacts. The corpus spans ISS (94), Research (90), NASA (79), EVA (71), and NBL (43) records. This preserves retrieval provenance; it does not certify that every cited source is official or that every generated answer is faithful.\n\n### Evaluation boundary\n\nThe notebook includes a displayed manual query, but no public held-out QA set, retrieval-recall benchmark, human faithfulness evaluation, baseline comparison, or per-inference latency measurement. No persistent hosted application endpoint is linked.",
+    "sources": [
+      {
+        "label": "Implementation notebook",
+        "url": "https://github.com/amarwahdan/-QORAbot-NASA-Research-Chat-System/blob/main/src/QORAbot%20.ipynb"
+      },
+      {
+        "label": "Persisted vector artifacts",
+        "url": "https://github.com/amarwahdan/-QORAbot-NASA-Research-Chat-System/tree/main/src/Vector_Database"
+      }
+    ]
+  },
+  {
+    "id": "sentiment",
+    "index": "06",
+    "name": "Sentiment Analysis App",
+    "category": "APPLIED NLP / LIGHTWEIGHT INFERENCE",
+    "accent": "#F29DD7",
+    "soft": "#4b24463b",
+    "subtitle": "From noisy tweets to sparse text features, a serialized probabilistic model, and an interactive Gradio inference path.",
+    "metric": "20K SAMPLE",
+    "metric_label": "Sampled from the 1.6M-tweet Sentiment140 corpus",
+    "metric_note": "Before deduplication / not a published accuracy score",
+    "flow": [
+      "Tweet sample",
+      "Clean + dedup",
+      "TF-IDF 1-2 grams",
+      "Multinomial NB",
+      "Gradio"
+    ],
+    "tech": [
+      "scikit-learn",
+      "NLTK",
+      "TF-IDF",
+      "joblib",
+      "Gradio"
+    ],
+    "repo": "Buliding-Sentiment-Analysis-App",
+    "demo": "",
+    "writeup": "",
+    "video": "",
+    "idea": "An end-to-end English tweet classifier covering preprocessing, feature extraction, model fitting, artifact serialization, and interactive inference.",
+    "challenge": "Remove social-media noise, preserve the fitted vectorizer/model contract at inference, and distinguish the custom classifier from a separate pretrained multilingual demonstration.",
+    "result": "**20,000 sampled rows before deduplication**, a TF-IDF cap of **5,000 features**, and an **80/20 split configuration**. Accuracy/F1 outputs are not preserved publicly, so no score is invented.",
+    "technologies": "Python · pandas · NLTK · scikit-learn · TF-IDF · Multinomial Naive Bayes · joblib · Gradio · Transformers",
+    "status": "Public source with a local Gradio inference path; no persistent hosted demo is linked. The 1.6M figure describes the source corpus, not the training run.",
+    "diagram": "flowchart LR\n    D[Sentiment140 corpus] --> S[20k sample before deduplication]\n    S --> C[Clean tweets and deduplicate]\n    C --> T[TF-IDF representation]\n    T --> N[Multinomial Naive Bayes]\n    N --> A[Serialized model and vectorizer]\n    A --> G[Gradio prediction]",
+    "deep": "### Custom-model path\n\nKaggleHub obtains Sentiment140. The script samples 20,000 rows with seed 42, removes duplicates, and cleans URLs, mentions, hashtags, punctuation, case, and stop words. `TfidfVectorizer` uses `max_features=5000`, unigram/bigram features, `min_df=5`, and `max_df=0.8`. A `test_size=0.2` split precedes fitting a default `MultinomialNB`.\n\n### Artifact-backed inference\n\njoblib saves `vectorizer.pkl` and `naivebayes_Model.pkl`; Gradio reloads these artifacts for positive/negative predictions. A separate interface wraps `tabularisai/multilingual-sentiment-analysis` through Transformers. That pretrained model is a second demonstration, not the custom TF-IDF model.\n\n### Evaluation boundary\n\nThe script computes train/test accuracy, five-fold cross-validation, a confusion matrix, and a classification report. Numeric outputs are not committed, and the final row count after deduplication is not reported. The vocabulary is fitted before the train/test split in the checked-in workflow; a leakage-safe future benchmark should split text first and fit the vectorizer on training text only. No accuracy, F1, measured speedup, or exact final train/test count is claimed here.",
+    "sources": [
+      {
+        "label": "Implementation source",
+        "url": "https://github.com/amarwahdan/Buliding-Sentiment-Analysis-App/blob/main/buliding_sentiment_analysis_app.py"
+      },
+      {
+        "label": "Source dataset",
+        "url": "https://www.kaggle.com/datasets/kazanova/sentiment140"
+      }
+    ]
+  },
+  {
+    "id": "healthmeror",
+    "index": "07",
+    "name": "Smart Healthmeror",
+    "category": "MEDICAL AI / PAST COMPETITION PROJECT",
+    "accent": "#8BA5C6",
+    "soft": "#2936493b",
+    "subtitle": "An implemented competition-era medical platform bringing prevention, diagnosis, and continuous monitoring into one project.",
+    "metric": "ARCHIVED",
+    "metric_label": "Implemented during the competition; no longer running",
+    "metric_note": "No published performance metrics or active demo",
+    "flow": [
+      "Prevention",
+      "Diagnosis",
+      "Continuous monitoring"
+    ],
+    "tech": [],
+    "repo": "",
+    "demo": "",
+    "writeup": "",
+    "video": "",
+    "idea": "I built Smart Healthmeror during a competition as an AI-powered medical platform combining prevention, diagnosis, and continuous monitoring. The project is no longer running.",
+    "challenge": "Bring these three medical-platform functions into a single project experience. The public material does not document the underlying model architecture or evaluation protocol.",
+    "result": "**Implemented competition project; now inactive.** No numeric model-performance result or active hosted demo is published.",
+    "technologies": "",
+    "status": "Project history confirmed by me. Implementation is no longer running; no public source or performance artifacts are linked.",
+    "diagram": "",
+    "deep": "### Historical scope\n\nThe available project description combines prevention, diagnosis, and continuous monitoring. I confirm that it was implemented during the competition and later stopped. These labels describe platform scope, not a model-inference architecture.\n\n### Current status\n\nThe platform is no longer running. No public framework names, model topology, medical datasets, validation scores, or hosted demo are documented. Its history is included without inventing a technical stack or clinical benchmark.",
+    "sources": []
+  }
+]
