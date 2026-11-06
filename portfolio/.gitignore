@@ -1,6 +1,0 @@
-__pycache__/
-*.pyc
-checks/
-node_modules/
-.env
-.env.*
